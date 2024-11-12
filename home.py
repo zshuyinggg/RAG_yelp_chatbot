@@ -6,8 +6,12 @@ st.set_page_config(
     layout='wide'
 )
 
-st.header("Chatbot Implementations with Langchain")
+st.header("Chatbot to recommend restaurants and dishes based on user preferences")
 st.write("""Shuying Zhu     Youxia Zhao""")
+st.write(""" 
+         - This is a chatbot that recommends restaurants and dishes based on user preferences. 
+         - We experiment RAG-based chatbot and fine-tuning chatbot. 
+         - Click on the tabs to try the chatbot!""")
 # st.write("""
 # Langchain is a powerful framework designed to streamline the development of applications using Language Models (LLMs). It provides a comprehensive integration of various components, simplifying the process of assembling them to create robust applications.
 
