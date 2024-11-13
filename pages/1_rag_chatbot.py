@@ -1,6 +1,6 @@
 import sys
 sys.path.append('/home/zshuying/RAG_yelp_chatbot')
-
+import pandas as pd
 import utils
 import streamlit as st
 from langchain.chains import create_retrieval_chain
@@ -11,28 +11,83 @@ from langchain_community.docstore.in_memory import InMemoryDocstore
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_core.documents import Document
 
 import utils
 import faiss
 
 from langchain.chains import ConversationChain
+from langchain.llms.base import LLM
+from typing import Any, List, Optional
+import requests
 
 st.set_page_config(page_title="Chatbot", page_icon="💬")
 st.header('RAG-based Restaurant Recommendation')
-st.write('I am a RAG-based chatbot! Currently I am only referring to restaurants in Philadelphia')
-st.write('Currently I am deployed on a cheap cpu server so please be patient with me as I am not very fast!')
+st.write('I am a RAG-based chatbot! ')
+st.write('For now, as I am still in the development stage, I only recommend restaurants in Philadelphia which has the most reviews on Yelp')
 
 # st.write('[![view source code ](https://img.shields.io/badge/view_source_code-gray?logo=github)](https://github.com/shashankdeshpande/langchain-chatbot/blob/master/pages/1_%F0%9F%92%AC_basic_chatbot.py)')
+
+class HyperbolicLLM(LLM):
+    api_key: str
+    model: str = "meta-llama/Meta-Llama-3.1-8B-Instruct"
+    temperature: float = 0.7
+    top_p: float = 0.9
+    
+    @property
+    def _llm_type(self) -> str:
+        return "hyperbolic"
+    
+    def _call(self, prompt: str, stop: Optional[List[str]] = None) -> str:
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.api_key}"
+        }
+        
+        data = {
+            "messages": [
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            "model": self.model,
+            "max_tokens": 16253,
+            "temperature": self.temperature,
+            "top_p": self.top_p
+        }
+        
+        response = requests.post(
+            "https://api.hyperbolic.xyz/v1/chat/completions",
+            headers=headers,
+            json=data
+        )
+        
+        if response.status_code != 200:
+            raise ValueError(f"API request failed: {response.text}")
+            
+        return response.json()['choices'][0]['message']['content']
 
 class BasicChatbot:
 
     def __init__(self):
         utils.sync_st_session()
-        self.llm = utils.configure_llm()
-        self.retriever = self.setup_retriever()
+        
+        # Initialize the Hyperbolic LLM
+        api_key = st.secrets["HYPERBOLIC_API_KEY"]  # Store your API key in .streamlit/secrets.toml
+        self.llm = HyperbolicLLM(
+            api_key=api_key,
+            model="meta-llama/Meta-Llama-3.1-8B-Instruct",
+            temperature=0.7,
+            top_p=0.9
+        )
+        
+        print(f"\nLLM configuration:\n{self.llm}")
+        self.retriever = self.setup_retriever(k=2)
         self.question_answer_chain = self.setup_question_answer_chain()
+        self.reference_df = pd.read_csv('/home/zshuying/RAG_yelp_chatbot/data/merge_businessinfo_reviews.csv')
     
-    def setup_retriever(self):
+    def setup_retriever(self,k=2):
         embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         index = faiss.IndexFlatL2(len(embeddings.embed_query("hello world")))
         vector_store = FAISS.load_local(
@@ -40,25 +95,62 @@ class BasicChatbot:
             embeddings=embeddings,
             allow_dangerous_deserialization=True
         )
-        return vector_store.as_retriever(search_kwargs={'k': 10})
+        return vector_store.as_retriever(search_kwargs={'k': k})
+
+
+    def get_retrieved_docs(self, query, verbose=False):
+        retrieved_docs = self.retriever.get_relevant_documents(query)
+
+        print("Query:", query)
+        print("\nRetrieved Restaurants:")
+        if verbose:
+            for i, doc in enumerate(retrieved_docs, 1):
+                print(f"\nRestaurant {doc.metadata['source']}:")
+                print(self.reference_df[self.reference_df['business_id'] == doc.metadata['source']])
+                print("-" * 50)
+        return self.reference_df[self.reference_df['business_id'].isin([doc.metadata['source'] for doc in retrieved_docs])]
+
+
+    def turn_retrieved_docs_into_string(self, retrieved_df):
+        docs = []
+        for _, row in retrieved_df.iterrows():
+            # Truncate reviews to a reasonable length (e.g., first 500 characters)
+            truncated_reviews = row['all_reviews'][:1000] + "..." if len(row['all_reviews']) > 1000 else row['all_reviews']
+            
+            content = (
+                f"Restaurant Name: {row['name']}\n"
+                f"Address: {row['address']}\n" 
+                f"Attributes: {row['attributes']}\n"
+                f"Categories: {row['categories']}\n"
+                f"Key Reviews: {truncated_reviews}"
+            )
+            docs.append(Document(page_content=content))
+        return docs
+
+
 
     def setup_question_answer_chain(self):
         system_prompt = (
-            "You are an assistant to recommend restaurants. "
-            "You are only allowed to recommend restaurants that are provided to you as retrieved context. "
-            "Each entry in the retrieved context is a formatted as 'RESTAURANT NAME | ADDRESS | ATTRIBUTES | CATEGORIES | ALL REVIEWS' "
-            "You need to SEPARATE the contextwith '|' to extract the restaurant name, address, attributes, categories, and all reviews from the retrieved context. "
-            "You need to tell the user the exact restaurant name, exact address, and summarize the attributes, categories, and all reviews for their question. "
-            "DO NOT make up any restaurants that are not in the retrieved context. "
-            "You can suggest multiple restaurants if needed.\n\n{context}"
+            "You are a Philadelphia restaurant recommendation assistant. "
+            "Using ONLY the restaurant information below:\n"
+            "---\n"
+            "{context}\n"
+            "---\n"
+            "Provide recommendations for restaurant that matches the request.\n"
+            "Please provide the restaurant name, address and explain why it matches the request.\n"
+            "You can recommend up to 3 restaurants - if fewer restaurants match the request, only include those that are relevant."
         )
-        prompt = ChatPromptTemplate.from_messages(
-            [
-                ("system", system_prompt),
-                ("human", "{input}"),
-            ]
+        
+        prompt = ChatPromptTemplate.from_messages([
+            ("system", system_prompt),
+            ("human", "{input}")
+        ])
+        
+        return create_stuff_documents_chain(
+            self.llm,
+            prompt,
+            document_variable_name="context"
         )
-        return create_stuff_documents_chain(self.llm, prompt)
 
     @utils.enable_chat_history
     def main(self):
@@ -70,13 +162,15 @@ class BasicChatbot:
         for message in st.session_state.messages:
             with st.chat_message(message["role"]):
                 st.markdown(message["content"])
+
+        # Add text input for user query at bottom
+        user_input = st.text_input("Enter your restaurant query here:", placeholder="e.g. Italian restaurants with outdoor seating")
         
-        user_query = st.chat_input(placeholder="Ask me anything!")
-        if user_query:
+        if user_input:  # Use the text input instead of chat input
             # Display user message
             with st.chat_message("user"):
-                st.markdown(user_query)
-            st.session_state.messages.append({"role": "user", "content": user_query})
+                st.markdown(user_input)
+            st.session_state.messages.append({"role": "user", "content": user_input})
             
             # Display assistant response with streaming
             with st.chat_message("assistant"):
@@ -84,22 +178,22 @@ class BasicChatbot:
                 full_response = ""
                 
                 try:
-                    rag_chain = create_retrieval_chain(self.retriever, self.question_answer_chain)
-                    response = rag_chain.invoke({"input": user_query})
-                    full_response = response["answer"]
-                    retrieved_context = response.get("context", "No context retrieved")
+                    # Get retrieved documents and convert to string context
+                    retrieved_df = self.get_retrieved_docs(user_input, verbose=True)
+                    context = self.turn_retrieved_docs_into_string(retrieved_df)
                     
-                    # debug
-                    st.write("User Query:", user_query)
-                    st.write("Retriever Configuration:", self.retriever)
-                    # retrieved_docs = self.retriever.get_relevant_documents(test_query)
-
-                    # print("\nRetrieved documents:")
-                    # for i, doc in enumerate(retrieved_docs, 1):
-                    #     print(f"\nDocument {i}:")
-                    #     print(doc.page_content)
-                    #     print("-" * 50)
-                    # placeholder.markdown(f"Retrieved Context: {retrieved_context}\n\nResponse: {full_response}")
+                    # Add debug prints
+                    print("\nContext being passed to QA chain:")
+                    for doc in context:
+                        print(f"\nDocument content:\n{doc.page_content}\n---")
+                    
+                    response = self.question_answer_chain.invoke({
+                        "context": context,
+                        "input": user_input
+                    })
+                    
+                    full_response = response
+                    placeholder.markdown(full_response)
                     st.session_state.messages.append({"role": "assistant", "content": full_response})
                     
                 except Exception as e:

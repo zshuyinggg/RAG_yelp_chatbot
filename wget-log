@@ -1,0 +1,24 @@
+--2024-11-13 02:37:03--  https://drive.usercontent.google.com/download?id=13G2w_npXw5JsKa_TUn7jVFWanGcglyKs
+Resolving drive.usercontent.google.com (drive.usercontent.google.com)... 172.253.115.132, 2607:f8b0:4004:c1f::84
+Connecting to drive.usercontent.google.com (drive.usercontent.google.com)|172.253.115.132|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://accounts.google.com/ServiceLogin?service=wise&passive=1209600&continue=https://drive.usercontent.google.com/download?id%3D13G2w_npXw5JsKa_TUn7jVFWanGcglyKs&followup=https://drive.usercontent.google.com/download?id%3D13G2w_npXw5JsKa_TUn7jVFWanGcglyKs [following]
+--2024-11-13 02:37:03--  https://accounts.google.com/ServiceLogin?service=wise&passive=1209600&continue=https://drive.usercontent.google.com/download?id%3D13G2w_npXw5JsKa_TUn7jVFWanGcglyKs&followup=https://drive.usercontent.google.com/download?id%3D13G2w_npXw5JsKa_TUn7jVFWanGcglyKs
+Resolving accounts.google.com (accounts.google.com)... 142.250.31.84, 2607:f8b0:4004:c21::54
+Connecting to accounts.google.com (accounts.google.com)|142.250.31.84|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://accounts.google.com/InteractiveLogin?continue=https://drive.usercontent.google.com/download?id%3D13G2w_npXw5JsKa_TUn7jVFWanGcglyKs&followup=https://drive.usercontent.google.com/download?id%3D13G2w_npXw5JsKa_TUn7jVFWanGcglyKs&passive=1209600&service=wise&ifkv=AcMMx-fTCEX7mwRhbrlZmI-ztRZ6ucCNk6ksNAY8MOsf1OCBXWMG5OWDGj-G6pxtfqF12xfgBL69 [following]
+--2024-11-13 02:37:04--  https://accounts.google.com/InteractiveLogin?continue=https://drive.usercontent.google.com/download?id%3D13G2w_npXw5JsKa_TUn7jVFWanGcglyKs&followup=https://drive.usercontent.google.com/download?id%3D13G2w_npXw5JsKa_TUn7jVFWanGcglyKs&passive=1209600&service=wise&ifkv=AcMMx-fTCEX7mwRhbrlZmI-ztRZ6ucCNk6ksNAY8MOsf1OCBXWMG5OWDGj-G6pxtfqF12xfgBL69
+Reusing existing connection to accounts.google.com:443.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fdrive.usercontent.google.com%2Fdownload%3Fid%3D13G2w_npXw5JsKa_TUn7jVFWanGcglyKs&followup=https%3A%2F%2Fdrive.usercontent.google.com%2Fdownload%3Fid%3D13G2w_npXw5JsKa_TUn7jVFWanGcglyKs&ifkv=AcMMx-cWKnBapMLbq-UXEcIBgaBpZvuP8DLgP4jPJIbAIZQIF583gu7nAANkrX29aoM6mDHEC6EG&passive=1209600&service=wise&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S707887283%3A1731465424049224 [following]
+--2024-11-13 02:37:04--  https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fdrive.usercontent.google.com%2Fdownload%3Fid%3D13G2w_npXw5JsKa_TUn7jVFWanGcglyKs&followup=https%3A%2F%2Fdrive.usercontent.google.com%2Fdownload%3Fid%3D13G2w_npXw5JsKa_TUn7jVFWanGcglyKs&ifkv=AcMMx-cWKnBapMLbq-UXEcIBgaBpZvuP8DLgP4jPJIbAIZQIF583gu7nAANkrX29aoM6mDHEC6EG&passive=1209600&service=wise&flowName=WebLiteSignIn&flowEntry=ServiceLogin&dsh=S707887283%3A1731465424049224
+Reusing existing connection to accounts.google.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘download?id=13G2w_npXw5JsKa_TUn7jVFWanGcglyKs’
+
+download?id=13G2w_npXw5JsKa_TUn7jVFWanGcgly     [<=>                                                                                        ]       0  --.-KB/s               download?id=13G2w_npXw5JsKa_TUn7jVFWanGcgly     [ <=>                                                                                       ] 816.97K  --.-KB/s    in 0.06s   
+
+2024-11-13 02:37:04 (13.7 MB/s) - ‘download?id=13G2w_npXw5JsKa_TUn7jVFWanGcglyKs’ saved [836581]
+

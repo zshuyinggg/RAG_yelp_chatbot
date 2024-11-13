@@ -1,8 +1,11 @@
+#%%
 import json
 import pandas as pd
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
+
+
 def load_data(file_path):
     data = []
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -10,9 +13,16 @@ def load_data(file_path):
             data.append(json.loads(line.strip()))
     return data
 
+#%%
+import gc
+gc.collect()
+#%%
+business_data = load_data('./data/yelp_academic_dataset_business.json')
+review_data = load_data('./data/yelp_academic_dataset_review.json')
 
-business_data = load_data('/data/yelp_academic_dataset_business.json')
-review_df = pd.read_csv('/data/yelp_academic_dataset_review.csv')
+
+#%%
+review_df = pd.DataFrame(review_data)
 business_df = pd.DataFrame(business_data)
 Philadelphia_df = business_df[business_df['city'] == 'Philadelphia']
 food_related_df = Philadelphia_df[Philadelphia_df['categories'].str.contains('food|restaurant|cafe|bistro|diner|eatery|bar|pub|grill|buffet|bakery|pizzeria|'
@@ -21,13 +31,17 @@ food_related_df = Philadelphia_df[Philadelphia_df['categories'].str.contains('fo
     'brunch|breakfast|lunch|dinner|takeout|delivery|sandwich|burger|'
     'wine|beer|brewery|gelato|smoothie|juice', case=False, na=False)]
 review_df = review_df[review_df['business_id'].isin(Philadelphia_df['business_id'])]
+
+#%%
+
+
 review_df_grouped = review_df.groupby('business_id')['text'].apply(lambda x: ' '.join(x)).reset_index()
 merge_df = pd.merge(business_df, review_df_grouped, on='business_id', how='left')
 merge_df.rename(columns={'text': 'all_reviews'}, inplace=True)
 merge_df = merge_df[['business_id', 'name', 'address', 'attributes', 'categories', 'all_reviews']]
 
-merge_df.to_csv('/data/merge_businessinfo_reviews_philadelphia.csv', index=False)
-
+merge_df.to_csv('./data/merge_businessinfo_reviews_philadelphia.csv', index=False)
+#%%
 merge_df['full_context'] = merge_df['name'] + ' | ' + merge_df['address'] + ' | ' + merge_df['attributes'].astype(str) + ' | ' + merge_df['categories'] + ' | ' + merge_df['all_reviews']
 
 

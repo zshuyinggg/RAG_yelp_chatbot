@@ -24,3 +24,657 @@ Collecting usage statistics. To deactivate, set browser.gatherUsageStats to fals
   URL: http://0.0.0.0:8501
 
   Stopping...
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://10.0.0.4:8501
+  External URL: http://52.184.185.174:8501
+
+  Stopping...
+  Stopping...
+Exception ignored in: <module 'threading' from '/home/zshuying/anaconda3/envs/rag/lib/python3.10/threading.py'>
+Traceback (most recent call last):
+  File "/home/zshuying/anaconda3/envs/rag/lib/python3.10/threading.py", line 1537, in _shutdown
+    atexit_call()
+  File "/home/zshuying/anaconda3/envs/rag/lib/python3.10/concurrent/futures/thread.py", line 31, in _python_exit
+    t.join()
+  File "/home/zshuying/anaconda3/envs/rag/lib/python3.10/threading.py", line 1096, in join
+    self._wait_for_tstate_lock()
+  File "/home/zshuying/anaconda3/envs/rag/lib/python3.10/threading.py", line 1116, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+  File "/home/zshuying/anaconda3/envs/rag/lib/python3.10/site-packages/streamlit/web/bootstrap.py", line 44, in signal_handler
+    server.stop()
+  File "/home/zshuying/anaconda3/envs/rag/lib/python3.10/site-packages/streamlit/web/server/server.py", line 405, in stop
+    self._runtime.stop()
+  File "/home/zshuying/anaconda3/envs/rag/lib/python3.10/site-packages/streamlit/runtime/runtime.py", line 324, in stop
+    async_objs.eventloop.call_soon_threadsafe(stop_on_eventloop)
+  File "/home/zshuying/anaconda3/envs/rag/lib/python3.10/asyncio/base_events.py", line 798, in call_soon_threadsafe
+    self._check_closed()
+  File "/home/zshuying/anaconda3/envs/rag/lib/python3.10/asyncio/base_events.py", line 515, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+Collecting usage statistics. To deactivate, set browser.gatherUsageStats to false.
+
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://10.0.0.4:8501
+  External URL: http://52.184.185.174:8501
+
+2024-11-13 03:48:58.758 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+/home/zshuying/RAG_yelp_chatbot/pages/1_rag_chatbot.py:102: LangChainDeprecationWarning: The method `BaseRetriever.get_relevant_documents` was deprecated in langchain-core 0.1.46 and will be removed in 1.0. Use :meth:`~invoke` instead.
+  retrieved_docs = self.retriever.get_relevant_documents(query)
+2024-11-13 03:49:08.778 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 03:52:41.549 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 04:00:22.410 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 04:00:56.522 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 04:01:06.470 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 04:01:10.296 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 04:03:48.321 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+Query: Chinese restaurant with spicy food
+
+Retrieved Restaurants:
+
+Restaurant fcpHrRopilvsBwUajFB5rw:
+                 business_id  ...                                       full_context
+1437  fcpHrRopilvsBwUajFB5rw  ...  |**RESTAURANT_NAME**:Dim Sum Garden |**RESTAUR...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Restaurant uf4gH2bLBox8bCHw30kJxQ:
+                 business_id  ...                                       full_context
+1329  uf4gH2bLBox8bCHw30kJxQ  ...  |**RESTAURANT_NAME**:Bao Nine |**RESTAURANT_AD...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Context being passed to QA chain:
+
+Document content:
+Restaurant Name: Bao Nine
+Address: 38 S 19th St
+Attributes: {'BusinessAcceptsCreditCards': 'True', 'BusinessParking': "{'garage': True, 'street': False, 'validated': False, 'lot': False, 'valet': False}", 'Ambience': "{'touristy': False, 'hipster': False, 'romantic': False, 'divey': False, 'intimate': False, 'trendy': False, 'upscale': False, 'classy': True, 'casual': False}", 'RestaurantsDelivery': 'True', 'OutdoorSeating': 'True', 'RestaurantsTakeOut': 'True', 'Caters': 'True', 'WheelchairAccessible': 'True'}
+Categories: Taiwanese, Restaurants, Asian Fusion
+Key Reviews: The Yenta pastrami bao is incredible, a great concoction of fusion fast casual food. I just wish the fried chicken baos, which are also delicious, were a little bigger or lower the price by 75 cents. With two baos for $9+ tax and stuff, I want to be pretty satisfied. As a comparison, a Federal Donuts fried chicken sandwich is $8.|**REVIEW_SEPARATOR**|I love the customer service. They also gave ma a free Hamm's beer.  I got one of the bowls and it was so delicious.  The staff was awesome.  The benches outside provided social distancing it was great!|**REVIEW_SEPARATOR**|super soft pillowy bao.  how i heart you.  thank you bao nine for existing in philly.|**REVIEW_SEPARATOR**|I would not review Bao Nine if I lived local so as not to attract a crowd.  As it is, we were nearby visiting elderly relatives and stopped in for lunch.  OMGosh!  So good.  Can't wait to go back and try other creations.  
+
+The service was so pleasant and attentive without being intrusive.|**REVIEW_SEPARATOR**|This ...
+---
+
+Document content:
+Restaurant Name: Dim Sum Garden
+Address: 59 N 11th St
+Attributes: {'HappyHour': 'True'}
+Categories: Restaurants, Chinese, Dim Sum
+Key Reviews: Food is amazing here. Try crab and pork juicy buns and siu mai.|**REVIEW_SEPARATOR**|Dim Sum garden is my favorite Shanghai restaurant that I have encountered as of yet in America.  The highlight of the whole place is the xiao long bao also known as soup buns.  For the uninitiated these are buns which are delicately made with thin shells and filled with steaming hot soup which consists of pork and broth.  They are to die for but one must also be careful not to have the hot soup squirt out on them which can sometimes be a difficult task.  This place has the best soup buns I have had since I have been to Shanghai. I am serious about this as I have been to Flushing and Chinatown and not found any as tasty as these. They are succulent and flavorful and warm you up from the inside.  
+
+Now let's tackle the rest of the menu.  The menu is really trying to cater to all tastes. It has traditional Shanghai dishes to Americanized Chinese food and just plain Fried Chicken with French Fries.  The di...
+---
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+Query: What is the best Thai food
+
+Retrieved Restaurants:
+
+Restaurant uf4gH2bLBox8bCHw30kJxQ:
+                 business_id  ...                                       full_context
+1329  uf4gH2bLBox8bCHw30kJxQ  ...  |**RESTAURANT_NAME**:Bao Nine |**RESTAURANT_AD...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Restaurant fcpHrRopilvsBwUajFB5rw:
+                 business_id  ...                                       full_context
+1437  fcpHrRopilvsBwUajFB5rw  ...  |**RESTAURANT_NAME**:Dim Sum Garden |**RESTAUR...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Context being passed to QA chain:
+
+Document content:
+Restaurant Name: Bao Nine
+Address: 38 S 19th St
+Attributes: {'BusinessAcceptsCreditCards': 'True', 'BusinessParking': "{'garage': True, 'street': False, 'validated': False, 'lot': False, 'valet': False}", 'Ambience': "{'touristy': False, 'hipster': False, 'romantic': False, 'divey': False, 'intimate': False, 'trendy': False, 'upscale': False, 'classy': True, 'casual': False}", 'RestaurantsDelivery': 'True', 'OutdoorSeating': 'True', 'RestaurantsTakeOut': 'True', 'Caters': 'True', 'WheelchairAccessible': 'True'}
+Categories: Taiwanese, Restaurants, Asian Fusion
+Key Reviews: The Yenta pastrami bao is incredible, a great concoction of fusion fast casual food. I just wish the fried chicken baos, which are also delicious, were a little bigger or lower the price by 75 cents. With two baos for $9+ tax and stuff, I want to be pretty satisfied. As a comparison, a Federal Donuts fried chicken sandwich is $8.|**REVIEW_SEPARATOR**|I love the customer service. They also gave ma a free Hamm's beer.  I got one of the bowls and it was so delicious.  The staff was awesome.  The benches outside provided social distancing it was great!|**REVIEW_SEPARATOR**|super soft pillowy bao.  how i heart you.  thank you bao nine for existing in philly.|**REVIEW_SEPARATOR**|I would not review Bao Nine if I lived local so as not to attract a crowd.  As it is, we were nearby visiting elderly relatives and stopped in for lunch.  OMGosh!  So good.  Can't wait to go back and try other creations.  
+
+The service was so pleasant and attentive without being intrusive.|**REVIEW_SEPARATOR**|This ...
+---
+
+Document content:
+Restaurant Name: Dim Sum Garden
+Address: 59 N 11th St
+Attributes: {'HappyHour': 'True'}
+Categories: Restaurants, Chinese, Dim Sum
+Key Reviews: Food is amazing here. Try crab and pork juicy buns and siu mai.|**REVIEW_SEPARATOR**|Dim Sum garden is my favorite Shanghai restaurant that I have encountered as of yet in America.  The highlight of the whole place is the xiao long bao also known as soup buns.  For the uninitiated these are buns which are delicately made with thin shells and filled with steaming hot soup which consists of pork and broth.  They are to die for but one must also be careful not to have the hot soup squirt out on them which can sometimes be a difficult task.  This place has the best soup buns I have had since I have been to Shanghai. I am serious about this as I have been to Flushing and Chinatown and not found any as tasty as these. They are succulent and flavorful and warm you up from the inside.  
+
+Now let's tackle the rest of the menu.  The menu is really trying to cater to all tastes. It has traditional Shanghai dishes to Americanized Chinese food and just plain Fried Chicken with French Fries.  The di...
+---
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+Query: What is the best Thailand restaurant 
+
+Retrieved Restaurants:
+
+Restaurant uf4gH2bLBox8bCHw30kJxQ:
+                 business_id  ...                                       full_context
+1329  uf4gH2bLBox8bCHw30kJxQ  ...  |**RESTAURANT_NAME**:Bao Nine |**RESTAURANT_AD...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Restaurant o7YE1WaFeQg_piECb9cgjQ:
+                business_id  ...                                       full_context
+422  o7YE1WaFeQg_piECb9cgjQ  ...  |**RESTAURANT_NAME**:Ratchada Thai & Laos Cuis...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Context being passed to QA chain:
+2024-11-13 04:06:03.459 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+
+Document content:
+Restaurant Name: Ratchada Thai & Laos Cuisine
+Address: 1117 S 11th St
+Attributes: {'RestaurantsReservations': 'True', 'NoiseLevel': "u'quiet'", 'BusinessAcceptsCreditCards': 'True', 'RestaurantsTakeOut': 'True', 'Caters': 'True', 'RestaurantsGoodForGroups': 'True', 'RestaurantsDelivery': 'True', 'Alcohol': "u'none'", 'BikeParking': 'True', 'Ambience': "{'touristy': False, 'hipster': False, 'romantic': True, 'divey': False, 'intimate': False, 'trendy': False, 'upscale': False, 'classy': True, 'casual': False}", 'GoodForKids': 'True', 'HasTV': 'True', 'RestaurantsPriceRange2': '2', 'RestaurantsAttire': "u'casual'", 'WiFi': "'no'", 'BusinessParking': "{'garage': False, 'street': True, 'validated': False, 'lot': True, 'valet': False}", 'GoodForMeal': "{u'breakfast': False, u'brunch': False, u'lunch': True, u'dinner': True, u'latenight': False, u'dessert': None}", 'OutdoorSeating': 'None'}
+Categories: Restaurants, Thai, Laotian, Asian Fusion
+Key Reviews: We ordered take out one night, feeling Thai, not really sure where to go, and found this place and saw the good reviews. I tried to order fresh spring rolls, but they didn't have them, so I got coconut chicken soup- which was very good! I ordered red chicken curry and my husband got drunken noodles with shrimp. Both were so boring, and for $15 a piece we were both disappointed. We both also requested spicy and neither of us got it. It seems like other dishes might be better, but we most likely won't go back again. Sorry, Ratchada, we wanted to like you.|**REVIEW_SEPARATOR**|Ordered delivery today which arrived on time and still hot. Spring rolls, beef drunken noodles, and chicken satay. Everything was delicious and the portion sizes are generous.|**REVIEW_SEPARATOR**|Very good food, the place was empty when we visited.  Service was quick enough, and they provided some recommendations.
+
+I started with the Laotian onion soup.  Very tasty, with a lot of vegetables, I would order this agai...
+---
+
+Document content:
+Restaurant Name: Bao Nine
+Address: 38 S 19th St
+Attributes: {'BusinessAcceptsCreditCards': 'True', 'BusinessParking': "{'garage': True, 'street': False, 'validated': False, 'lot': False, 'valet': False}", 'Ambience': "{'touristy': False, 'hipster': False, 'romantic': False, 'divey': False, 'intimate': False, 'trendy': False, 'upscale': False, 'classy': True, 'casual': False}", 'RestaurantsDelivery': 'True', 'OutdoorSeating': 'True', 'RestaurantsTakeOut': 'True', 'Caters': 'True', 'WheelchairAccessible': 'True'}
+Categories: Taiwanese, Restaurants, Asian Fusion
+Key Reviews: The Yenta pastrami bao is incredible, a great concoction of fusion fast casual food. I just wish the fried chicken baos, which are also delicious, were a little bigger or lower the price by 75 cents. With two baos for $9+ tax and stuff, I want to be pretty satisfied. As a comparison, a Federal Donuts fried chicken sandwich is $8.|**REVIEW_SEPARATOR**|I love the customer service. They also gave ma a free Hamm's beer.  I got one of the bowls and it was so delicious.  The staff was awesome.  The benches outside provided social distancing it was great!|**REVIEW_SEPARATOR**|super soft pillowy bao.  how i heart you.  thank you bao nine for existing in philly.|**REVIEW_SEPARATOR**|I would not review Bao Nine if I lived local so as not to attract a crowd.  As it is, we were nearby visiting elderly relatives and stopped in for lunch.  OMGosh!  So good.  Can't wait to go back and try other creations.  
+
+The service was so pleasant and attentive without being intrusive.|**REVIEW_SEPARATOR**|This ...
+---
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+Query: What is the best Thailand restaurant 
+
+Retrieved Restaurants:
+
+Restaurant uf4gH2bLBox8bCHw30kJxQ:
+                 business_id  ...                                       full_context
+1329  uf4gH2bLBox8bCHw30kJxQ  ...  |**RESTAURANT_NAME**:Bao Nine |**RESTAURANT_AD...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Restaurant o7YE1WaFeQg_piECb9cgjQ:
+                business_id  ...                                       full_context
+422  o7YE1WaFeQg_piECb9cgjQ  ...  |**RESTAURANT_NAME**:Ratchada Thai & Laos Cuis...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Context being passed to QA chain:
+
+Document content:
+Restaurant Name: Ratchada Thai & Laos Cuisine
+Address: 1117 S 11th St
+Attributes: {'RestaurantsReservations': 'True', 'NoiseLevel': "u'quiet'", 'BusinessAcceptsCreditCards': 'True', 'RestaurantsTakeOut': 'True', 'Caters': 'True', 'RestaurantsGoodForGroups': 'True', 'RestaurantsDelivery': 'True', 'Alcohol': "u'none'", 'BikeParking': 'True', 'Ambience': "{'touristy': False, 'hipster': False, 'romantic': True, 'divey': False, 'intimate': False, 'trendy': False, 'upscale': False, 'classy': True, 'casual': False}", 'GoodForKids': 'True', 'HasTV': 'True', 'RestaurantsPriceRange2': '2', 'RestaurantsAttire': "u'casual'", 'WiFi': "'no'", 'BusinessParking': "{'garage': False, 'street': True, 'validated': False, 'lot': True, 'valet': False}", 'GoodForMeal': "{u'breakfast': False, u'brunch': False, u'lunch': True, u'dinner': True, u'latenight': False, u'dessert': None}", 'OutdoorSeating': 'None'}
+Categories: Restaurants, Thai, Laotian, Asian Fusion
+Key Reviews: We ordered take out one night, feeling Thai, not really sure where to go, and found this place and saw the good reviews. I tried to order fresh spring rolls, but they didn't have them, so I got coconut chicken soup- which was very good! I ordered red chicken curry and my husband got drunken noodles with shrimp. Both were so boring, and for $15 a piece we were both disappointed. We both also requested spicy and neither of us got it. It seems like other dishes might be better, but we most likely won't go back again. Sorry, Ratchada, we wanted to like you.|**REVIEW_SEPARATOR**|Ordered delivery today which arrived on time and still hot. Spring rolls, beef drunken noodles, and chicken satay. Everything was delicious and the portion sizes are generous.|**REVIEW_SEPARATOR**|Very good food, the place was empty when we visited.  Service was quick enough, and they provided some recommendations.
+
+I started with the Laotian onion soup.  Very tasty, with a lot of vegetables, I would order this agai...
+---
+
+Document content:
+Restaurant Name: Bao Nine
+Address: 38 S 19th St
+Attributes: {'BusinessAcceptsCreditCards': 'True', 'BusinessParking': "{'garage': True, 'street': False, 'validated': False, 'lot': False, 'valet': False}", 'Ambience': "{'touristy': False, 'hipster': False, 'romantic': False, 'divey': False, 'intimate': False, 'trendy': False, 'upscale': False, 'classy': True, 'casual': False}", 'RestaurantsDelivery': 'True', 'OutdoorSeating': 'True', 'RestaurantsTakeOut': 'True', 'Caters': 'True', 'WheelchairAccessible': 'True'}
+Categories: Taiwanese, Restaurants, Asian Fusion
+Key Reviews: The Yenta pastrami bao is incredible, a great concoction of fusion fast casual food. I just wish the fried chicken baos, which are also delicious, were a little bigger or lower the price by 75 cents. With two baos for $9+ tax and stuff, I want to be pretty satisfied. As a comparison, a Federal Donuts fried chicken sandwich is $8.|**REVIEW_SEPARATOR**|I love the customer service. They also gave ma a free Hamm's beer.  I got one of the bowls and it was so delicious.  The staff was awesome.  The benches outside provided social distancing it was great!|**REVIEW_SEPARATOR**|super soft pillowy bao.  how i heart you.  thank you bao nine for existing in philly.|**REVIEW_SEPARATOR**|I would not review Bao Nine if I lived local so as not to attract a crowd.  As it is, we were nearby visiting elderly relatives and stopped in for lunch.  OMGosh!  So good.  Can't wait to go back and try other creations.  
+
+The service was so pleasant and attentive without being intrusive.|**REVIEW_SEPARATOR**|This ...
+---
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+Query: What is the best Thailand restaurant 
+
+Retrieved Restaurants:
+
+Restaurant uf4gH2bLBox8bCHw30kJxQ:
+2024-11-13 04:07:55.023 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+                 business_id  ...                                       full_context
+1329  uf4gH2bLBox8bCHw30kJxQ  ...  |**RESTAURANT_NAME**:Bao Nine |**RESTAURANT_AD...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Restaurant o7YE1WaFeQg_piECb9cgjQ:
+                business_id  ...                                       full_context
+422  o7YE1WaFeQg_piECb9cgjQ  ...  |**RESTAURANT_NAME**:Ratchada Thai & Laos Cuis...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Context being passed to QA chain:
+
+Document content:
+Restaurant Name: Ratchada Thai & Laos Cuisine
+Address: 1117 S 11th St
+Attributes: {'RestaurantsReservations': 'True', 'NoiseLevel': "u'quiet'", 'BusinessAcceptsCreditCards': 'True', 'RestaurantsTakeOut': 'True', 'Caters': 'True', 'RestaurantsGoodForGroups': 'True', 'RestaurantsDelivery': 'True', 'Alcohol': "u'none'", 'BikeParking': 'True', 'Ambience': "{'touristy': False, 'hipster': False, 'romantic': True, 'divey': False, 'intimate': False, 'trendy': False, 'upscale': False, 'classy': True, 'casual': False}", 'GoodForKids': 'True', 'HasTV': 'True', 'RestaurantsPriceRange2': '2', 'RestaurantsAttire': "u'casual'", 'WiFi': "'no'", 'BusinessParking': "{'garage': False, 'street': True, 'validated': False, 'lot': True, 'valet': False}", 'GoodForMeal': "{u'breakfast': False, u'brunch': False, u'lunch': True, u'dinner': True, u'latenight': False, u'dessert': None}", 'OutdoorSeating': 'None'}
+Categories: Restaurants, Thai, Laotian, Asian Fusion
+Key Reviews: We ordered take out one night, feeling Thai, not really sure where to go, and found this place and saw the good reviews. I tried to order fresh spring rolls, but they didn't have them, so I got coconut chicken soup- which was very good! I ordered red chicken curry and my husband got drunken noodles with shrimp. Both were so boring, and for $15 a piece we were both disappointed. We both also requested spicy and neither of us got it. It seems like other dishes might be better, but we most likely won't go back again. Sorry, Ratchada, we wanted to like you.|**REVIEW_SEPARATOR**|Ordered delivery today which arrived on time and still hot. Spring rolls, beef drunken noodles, and chicken satay. Everything was delicious and the portion sizes are generous.|**REVIEW_SEPARATOR**|Very good food, the place was empty when we visited.  Service was quick enough, and they provided some recommendations.
+
+I started with the Laotian onion soup.  Very tasty, with a lot of vegetables, I would order this agai...
+---
+
+Document content:
+Restaurant Name: Bao Nine
+Address: 38 S 19th St
+Attributes: {'BusinessAcceptsCreditCards': 'True', 'BusinessParking': "{'garage': True, 'street': False, 'validated': False, 'lot': False, 'valet': False}", 'Ambience': "{'touristy': False, 'hipster': False, 'romantic': False, 'divey': False, 'intimate': False, 'trendy': False, 'upscale': False, 'classy': True, 'casual': False}", 'RestaurantsDelivery': 'True', 'OutdoorSeating': 'True', 'RestaurantsTakeOut': 'True', 'Caters': 'True', 'WheelchairAccessible': 'True'}
+Categories: Taiwanese, Restaurants, Asian Fusion
+Key Reviews: The Yenta pastrami bao is incredible, a great concoction of fusion fast casual food. I just wish the fried chicken baos, which are also delicious, were a little bigger or lower the price by 75 cents. With two baos for $9+ tax and stuff, I want to be pretty satisfied. As a comparison, a Federal Donuts fried chicken sandwich is $8.|**REVIEW_SEPARATOR**|I love the customer service. They also gave ma a free Hamm's beer.  I got one of the bowls and it was so delicious.  The staff was awesome.  The benches outside provided social distancing it was great!|**REVIEW_SEPARATOR**|super soft pillowy bao.  how i heart you.  thank you bao nine for existing in philly.|**REVIEW_SEPARATOR**|I would not review Bao Nine if I lived local so as not to attract a crowd.  As it is, we were nearby visiting elderly relatives and stopped in for lunch.  OMGosh!  So good.  Can't wait to go back and try other creations.  
+
+The service was so pleasant and attentive without being intrusive.|**REVIEW_SEPARATOR**|This ...
+---
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+Query: What is the best Thailand restaurant 
+
+Retrieved Restaurants:
+
+Restaurant uf4gH2bLBox8bCHw30kJxQ:
+                 business_id  ...                                       full_context
+1329  uf4gH2bLBox8bCHw30kJxQ  ...  |**RESTAURANT_NAME**:Bao Nine |**RESTAURANT_AD...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Restaurant o7YE1WaFeQg_piECb9cgjQ:
+                business_id  ...                                       full_context
+422  o7YE1WaFeQg_piECb9cgjQ  ...  |**RESTAURANT_NAME**:Ratchada Thai & Laos Cuis...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Context being passed to QA chain:
+
+Document content:
+Restaurant Name: Ratchada Thai & Laos Cuisine
+Address: 1117 S 11th St
+Attributes: {'RestaurantsReservations': 'True', 'NoiseLevel': "u'quiet'", 'BusinessAcceptsCreditCards': 'True', 'RestaurantsTakeOut': 'True', 'Caters': 'True', 'RestaurantsGoodForGroups': 'True', 'RestaurantsDelivery': 'True', 'Alcohol': "u'none'", 'BikeParking': 'True', 'Ambience': "{'touristy': False, 'hipster': False, 'romantic': True, 'divey': False, 'intimate': False, 'trendy': False, 'upscale': False, 'classy': True, 'casual': False}", 'GoodForKids': 'True', 'HasTV': 'True', 'RestaurantsPriceRange2': '2', 'RestaurantsAttire': "u'casual'", 'WiFi': "'no'", 'BusinessParking': "{'garage': False, 'street': True, 'validated': False, 'lot': True, 'valet': False}", 'GoodForMeal': "{u'breakfast': False, u'brunch': False, u'lunch': True, u'dinner': True, u'latenight': False, u'dessert': None}", 'OutdoorSeating': 'None'}
+Categories: Restaurants, Thai, Laotian, Asian Fusion
+Key Reviews: We ordered take out one night, feeling Thai, not really sure where to go, and found this place and saw the good reviews. I tried to order fresh spring rolls, but they didn't have them, so I got coconut chicken soup- which was very good! I ordered red chicken curry and my husband got drunken noodles with shrimp. Both were so boring, and for $15 a piece we were both disappointed. We both also requested spicy and neither of us got it. It seems like other dishes might be better, but we most likely won't go back again. Sorry, Ratchada, we wanted to like you.|**REVIEW_SEPARATOR**|Ordered delivery today which arrived on time and still hot. Spring rolls, beef drunken noodles, and chicken satay. Everything was delicious and the portion sizes are generous.|**REVIEW_SEPARATOR**|Very good food, the place was empty when we visited.  Service was quick enough, and they provided some recommendations.
+
+I started with the Laotian onion soup.  Very tasty, with a lot of vegetables, I would order this agai...
+---
+2024-11-13 04:09:19.681 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 04:10:37.062 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 04:31:23.083 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:02:24.274 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:03:01.974 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:03:40.242 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:04:18.971 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:04:57.065 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:05:35.455 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:06:13.378 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:06:51.529 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:07:30.184 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:08:08.146 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:08:46.331 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:09:24.222 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:10:02.402 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:10:40.427 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:11:18.321 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:11:56.709 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:12:34.452 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:13:12.605 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:13:51.111 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:14:29.105 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:15:07.043 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:15:45.435 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:16:23.425 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:17:01.701 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:17:39.720 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:18:18.353 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:18:56.539 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:19:34.968 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:20:12.118 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:20:50.714 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:21:28.494 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:22:06.878 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:22:45.130 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:23:23.053 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:24:01.604 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:24:39.660 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:25:17.852 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:25:56.447 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:26:34.257 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:27:12.211 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+
+Document content:
+Restaurant Name: Bao Nine
+Address: 38 S 19th St
+Attributes: {'BusinessAcceptsCreditCards': 'True', 'BusinessParking': "{'garage': True, 'street': False, 'validated': False, 'lot': False, 'valet': False}", 'Ambience': "{'touristy': False, 'hipster': False, 'romantic': False, 'divey': False, 'intimate': False, 'trendy': False, 'upscale': False, 'classy': True, 'casual': False}", 'RestaurantsDelivery': 'True', 'OutdoorSeating': 'True', 'RestaurantsTakeOut': 'True', 'Caters': 'True', 'WheelchairAccessible': 'True'}
+Categories: Taiwanese, Restaurants, Asian Fusion
+Key Reviews: The Yenta pastrami bao is incredible, a great concoction of fusion fast casual food. I just wish the fried chicken baos, which are also delicious, were a little bigger or lower the price by 75 cents. With two baos for $9+ tax and stuff, I want to be pretty satisfied. As a comparison, a Federal Donuts fried chicken sandwich is $8.|**REVIEW_SEPARATOR**|I love the customer service. They also gave ma a free Hamm's beer.  I got one of the bowls and it was so delicious.  The staff was awesome.  The benches outside provided social distancing it was great!|**REVIEW_SEPARATOR**|super soft pillowy bao.  how i heart you.  thank you bao nine for existing in philly.|**REVIEW_SEPARATOR**|I would not review Bao Nine if I lived local so as not to attract a crowd.  As it is, we were nearby visiting elderly relatives and stopped in for lunch.  OMGosh!  So good.  Can't wait to go back and try other creations.  
+
+The service was so pleasant and attentive without being intrusive.|**REVIEW_SEPARATOR**|This ...
+---
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+Query: What is the best Thailand restaurant 
+
+Retrieved Restaurants:
+
+Restaurant uf4gH2bLBox8bCHw30kJxQ:
+                 business_id  ...                                       full_context
+1329  uf4gH2bLBox8bCHw30kJxQ  ...  |**RESTAURANT_NAME**:Bao Nine |**RESTAURANT_AD...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Restaurant o7YE1WaFeQg_piECb9cgjQ:
+                business_id  ...                                       full_context
+422  o7YE1WaFeQg_piECb9cgjQ  ...  |**RESTAURANT_NAME**:Ratchada Thai & Laos Cuis...
+
+[1 rows x 7 columns]
+--------------------------------------------------
+
+Context being passed to QA chain:
+
+Document content:
+Restaurant Name: Ratchada Thai & Laos Cuisine
+Address: 1117 S 11th St
+Attributes: {'RestaurantsReservations': 'True', 'NoiseLevel': "u'quiet'", 'BusinessAcceptsCreditCards': 'True', 'RestaurantsTakeOut': 'True', 'Caters': 'True', 'RestaurantsGoodForGroups': 'True', 'RestaurantsDelivery': 'True', 'Alcohol': "u'none'", 'BikeParking': 'True', 'Ambience': "{'touristy': False, 'hipster': False, 'romantic': True, 'divey': False, 'intimate': False, 'trendy': False, 'upscale': False, 'classy': True, 'casual': False}", 'GoodForKids': 'True', 'HasTV': 'True', 'RestaurantsPriceRange2': '2', 'RestaurantsAttire': "u'casual'", 'WiFi': "'no'", 'BusinessParking': "{'garage': False, 'street': True, 'validated': False, 'lot': True, 'valet': False}", 'GoodForMeal': "{u'breakfast': False, u'brunch': False, u'lunch': True, u'dinner': True, u'latenight': False, u'dessert': None}", 'OutdoorSeating': 'None'}
+Categories: Restaurants, Thai, Laotian, Asian Fusion
+Key Reviews: We ordered take out one night, feeling Thai, not really sure where to go, and found this place and saw the good reviews. I tried to order fresh spring rolls, but they didn't have them, so I got coconut chicken soup- which was very good! I ordered red chicken curry and my husband got drunken noodles with shrimp. Both were so boring, and for $15 a piece we were both disappointed. We both also requested spicy and neither of us got it. It seems like other dishes might be better, but we most likely won't go back again. Sorry, Ratchada, we wanted to like you.|**REVIEW_SEPARATOR**|Ordered delivery today which arrived on time and still hot. Spring rolls, beef drunken noodles, and chicken satay. Everything was delicious and the portion sizes are generous.|**REVIEW_SEPARATOR**|Very good food, the place was empty when we visited.  Service was quick enough, and they provided some recommendations.
+
+I started with the Laotian onion soup.  Very tasty, with a lot of vegetables, I would order this agai...
+---
+
+Document content:
+Restaurant Name: Bao Nine
+Address: 38 S 19th St
+Attributes: {'BusinessAcceptsCreditCards': 'True', 'BusinessParking': "{'garage': True, 'street': False, 'validated': False, 'lot': False, 'valet': False}", 'Ambience': "{'touristy': False, 'hipster': False, 'romantic': False, 'divey': False, 'intimate': False, 'trendy': False, 'upscale': False, 'classy': True, 'casual': False}", 'RestaurantsDelivery': 'True', 'OutdoorSeating': 'True', 'RestaurantsTakeOut': 'True', 'Caters': 'True', 'WheelchairAccessible': 'True'}
+Categories: Taiwanese, Restaurants, Asian Fusion
+Key Reviews: The Yenta pastrami bao is incredible, a great concoction of fusion fast casual food. I just wish the fried chicken baos, which are also delicious, were a little bigger or lower the price by 75 cents. With two baos for $9+ tax and stuff, I want to be pretty satisfied. As a comparison, a Federal Donuts fried chicken sandwich is $8.|**REVIEW_SEPARATOR**|I love the customer service. They also gave ma a free Hamm's beer.  I got one of the bowls and it was so delicious.  The staff was awesome.  The benches outside provided social distancing it was great!|**REVIEW_SEPARATOR**|super soft pillowy bao.  how i heart you.  thank you bao nine for existing in philly.|**REVIEW_SEPARATOR**|I would not review Bao Nine if I lived local so as not to attract a crowd.  As it is, we were nearby visiting elderly relatives and stopped in for lunch.  OMGosh!  So good.  Can't wait to go back and try other creations.  
+
+The service was so pleasant and attentive without being intrusive.|**REVIEW_SEPARATOR**|This ...
+---
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+
+LLM configuration:
+[1mHyperbolicLLM[0m
+Params: {}
+2024-11-13 05:27:50.774 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:28:28.688 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:29:06.488 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:29:44.695 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:30:22.984 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:31:01.351 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:31:39.164 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:32:17.367 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:32:55.984 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:33:33.468 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:34:11.768 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:34:49.901 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:35:27.983 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:36:06.116 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:36:44.160 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:37:22.016 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:37:59.740 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:38:38.350 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:39:16.372 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:39:54.338 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:40:32.494 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:41:10.522 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:41:48.617 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:42:27.193 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:43:05.786 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:43:44.003 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:44:22.188 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:45:00.633 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:45:38.882 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:46:16.890 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:46:54.521 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:47:32.838 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:48:10.329 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:48:48.762 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:49:26.948 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:50:05.890 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:50:43.249 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:51:21.354 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:51:59.267 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:52:36.968 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:53:15.318 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:53:53.838 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:54:31.865 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:55:09.661 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:55:47.620 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:56:26.682 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:57:04.712 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:57:43.082 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:58:21.090 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:58:59.029 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 05:59:36.951 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 06:00:15.338 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 06:00:53.182 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 06:01:31.465 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 06:02:09.571 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 06:02:47.579 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 06:03:25.229 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 06:04:03.604 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 06:04:41.674 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 06:05:19.881 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 12:58:20.028 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 13:36:29.278 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
+2024-11-13 13:38:29.223 Examining the path of torch.classes raised: Tried to instantiate class '__path__._path', but it does not exist! Ensure that it is registered via torch::class_
